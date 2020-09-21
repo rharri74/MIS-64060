@@ -1,0 +1,42 @@
+---
+title: "Assignment 1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r ETL}
+##Read in Housing data from Kaggle (https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data?select=test.csv)
+assignment1data <- read.csv("test.csv")
+
+##Descriptive statistics for Quantitative (Lot Area) and Cateogrical (Exterior1st)
+summary(assignment1data$LotArea)
+summary(assignment1data$Exterior1st)
+
+##Transform TotalBsmtSF to round to the nearest hundred squarefootage
+assignment1data$TotalBsmtSF <- round(assignment1data$TotalBsmtSF,-2)
+print(assignment1data$TotalBsmtSF)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r Plots, echo=FALSE}
+library("ggplot2")
+##Bar graph of count by Exterior1st
+ggplot(assignment1data, aes(x=Exterior1st)) + geom_bar()
+##Scatterplot of YearBuilt and LotArea
+ggplot(assignment1data, aes(x=YearBuilt, y=LotArea)) + geom_point()
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
