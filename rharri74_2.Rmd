@@ -1,0 +1,61 @@
+---
+title: "rharri74_2"
+author: "Ryan Harris"
+date: "10/2/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("FNN")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r UniversalBank Prep}
+## Preperation: Load libraries and data set
+library(caret)
+library(ISLR)
+library(FNN)
+
+UniversalBank <- read.csv("UniversalBank.csv")
+
+head(UniversalBank)
+summary(UniversalBank)
+```
+
+
+```{r UniversalBank Split 60/40}
+Train_Index = createDataPartition(UniversalBank$ID, p=0.6, list = FALSE)
+Train_Data = UniversalBank[Train_Index,]
+TraVal_Data = UniversalBank[-Train_Index,]
+
+summary(Train_Data)
+summary(TraVal_Data)
+```
+
+```{r Normalize}
+train.norm.df <- Train_Data
+valid.norm.df <- TraVal_Data
+
+norm.values <- preProcess(Train_Data[,2:4], method=c("center","scale"))
+norm.values2 <- preProcess(Train_Data[,6:9], method=c("center","scale"))
+
+train.norm.df[,2:4] <- predict(norm.values, Train_Data[, 2:4])
+valid.norm.df[,2:4] <- predict(norm.values, TraVal_Data[, 2:4])
+train.norm.df[,6:9] <- predict(norm.values2, Train_Data[, 6:9])
+valid.norm.df[,6:9] <- predict(norm.values2, TraVal_Data[, 6:9])
+
+summary(train.norm.df)
+summary(valid.norm.df)
+```
+```{r kNN}
+##I don't know how to make the following section include 2:4 and 6:9, so I just used 2:4. I couldn't get this code to work.
+nn <- knn(train = train.norm.df[,2:4], test = valid.norm.df,
+          cl = train.norm.df[,10], k = 1, prob = TRUE)
+row.names(Train_Data)[attr(nn, "nn.index")]
+```
