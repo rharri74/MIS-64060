@@ -30,7 +30,95 @@ custtest.df <- data.frame(ID=as.integer(5001),
                           Experience=as.integer(10),
                           Income=as.integer(84),
                           Family=as.integer(2),
+                          CCAvg=as.double(2),---
+title: "rharri74_2"
+author: "Ryan Harris"
+date: "10/2/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+install.packages("FNN")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r UniversalBank Prep}
+## Preperation: Load libraries and data set
+library(caret)
+library(FNN)
+library(dplyr)
+
+UniversalBank <- read.csv("UniversalBank.csv")
+
+custtest.df <- data.frame(ID=as.integer(5001),
+                          ZIP.Code=as.integer(43016),
+                          Age=as.integer(40),
+                          Experience=as.integer(10),
+                          Income=as.integer(84),
+                          Family=as.integer(2),
                           CCAvg=as.double(2),
+                          Education_1=as.integer(0),
+                          Education_2=as.integer(2),
+                          Education_3=as.integer(0),
+                          Mortgage=as.integer(0),
+                          Securities.Account=as.integer(0),
+                          CD.Account=as.integer(0),
+                          Online=as.integer(1),
+                          CreditCard=as.integer(1))
+
+levels(UniversalBank$Education)
+dummy_model<-dummyVars(~Education, data=UniversalBank)
+head(predict(dummy_model, UniversalBank))
+
+head(UniversalBank)
+summary(UniversalBank)
+```
+
+
+```{r UniversalBank Split 60/40}
+m_UniversalBank <- select(UniversalBank, ID, ZIP.Code, Age, Experience, Income, Education, Mortgage, Securities.Account, CD.Account, CreditCard, Personal.Loan )
+Train_Index = createDataPartition(m_UniversalBank$ID, p=0.6, list = FALSE)
+Train_Data = m_UniversalBank[Train_Index,]
+TraVal_Data = m_UniversalBank[-Train_Index,]
+
+summary(Train_Data)
+summary(TraVal_Data)
+```
+
+```{r Normalize}
+train.norm.df <- Train_Data
+valid.norm.df <- TraVal_Data
+
+norm.values <- preProcess(Train_Data[,3:5], method=c("center","scale"))
+
+train.norm.df[, 3:5] <- predict(norm.values, Train_Data[, 3:5])
+valid.norm.df[, 3:5] <- predict(norm.values, TraVal_Data[, 3:5])
+
+summary(train.norm.df)
+summary(valid.norm.df)
+dim(train.norm.df)
+dim(valid.norm.df)
+```
+```{r kNN}
+
+nn <- knn(train = train.norm.df[,3:10], test = valid.norm.df[,3:10],
+          cl = train.norm.df[,11], k = 1, prob = TRUE)
+row.names(Train_Data)[attr(nn, "nn.index")]
+```
+
+```{r Next section}
+norm.values <- preProcess(TraVal_Data[, 3:5], method=c("center", "scale")) # Use combined set to normalize
+
+traval.norm.df[, 3:5] <- predict(norm.values, TraVal_Data[, 3:5])
+test.norm.df[, 3:5] <- predict(norm.values, Test_Data[, 3:5])
+summary(traval.norm.df)
+```
                           Education_1=as.integer(0),
                           Education_2=as.integer(2),
                           Education_3=as.integer(0),
