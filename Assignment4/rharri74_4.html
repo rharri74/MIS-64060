@@ -14431,17 +14431,17 @@ Ryan Harris</p>
 
 <span class="c1">#Get Counts and % of Counts by State for Original DataFram</span>
 <span class="n">uni_df_st</span> <span class="o">=</span> <span class="n">uni_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;st&#39;</span><span class="p">])[</span><span class="s1">&#39;cllg_nme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">)</span>
-<span class="n">uni_df_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">uni_df_st</span><span class="p">[</span><span class="s1">&#39;ct&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">uni_df</span><span class="p">[</span><span class="s1">&#39;cllg_nme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">uni_df_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">uni_df_st</span><span class="p">[</span><span class="s1">&#39;ct&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">uni_df</span><span class="p">[</span><span class="s1">&#39;cllg_nme&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span>
 
 <span class="c1">#Add Original DataFrame %</span>
-<span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">])</span>
-<span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">])</span>
-<span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">])</span>
+<span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span>
+<span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span>
+<span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">uni_df_st</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;st&#39;</span><span class="p">)[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span>
 
 <span class="c1">#Create &#39;pct_diff&#39; Column by subtracting &#39;pct_ttl&#39; from &#39;pct&#39;</span>
-<span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span>
-<span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span>
-<span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_ttl&#39;</span><span class="p">]</span>
+<span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">uni_df1_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">uni_df2_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">uni_df3_st</span><span class="p">[</span><span class="s1">&#39;pct_ovrl&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
 </pre></div>
 
     </div>
@@ -14452,7 +14452,7 @@ Ryan Harris</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><i>I will also pull in the percentage of Private vs. Public for each cluster</i></p>
+<p><i>I will also pull in the percentage of Private vs. Public for each cluster below:</i></p>
 
 </div>
 </div>
@@ -14462,13 +14462,40 @@ Ryan Harris</p>
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#uni_df1_p = </span>
-<span class="c1">#uni_df1[&#39;pblc_prvt&#39;].count()</span>
-
-<span class="c1">#print(uni_df1_p)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create uni_df1_p df with Private(.sum()), Public(.count()-.sum()), and %Private (.sum()/count.())</span>
+<span class="n">uni_p_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;Public&#39;</span><span class="p">,</span><span class="s1">&#39;Private&#39;</span><span class="p">,</span><span class="s1">&#39;%Private&#39;</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;Cluster 0&#39;</span><span class="p">,</span><span class="n">uni_df1</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">-</span><span class="n">uni_df1</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">uni_df1</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),(</span><span class="n">uni_df1</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">uni_df1</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;Cluster 1&#39;</span><span class="p">,</span><span class="n">uni_df2</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">-</span><span class="n">uni_df2</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">uni_df2</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),(</span><span class="n">uni_df2</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">uni_df2</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">],</span>
+                     <span class="p">[</span><span class="s1">&#39;Cluster 2&#39;</span><span class="p">,</span><span class="n">uni_df3</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">-</span><span class="n">uni_df3</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">uni_df3</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),(</span><span class="n">uni_df3</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">uni_df3</span><span class="p">[</span><span class="s1">&#39;pblc_prvt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span><span class="o">*</span><span class="mi">100</span><span class="p">]])</span>
+<span class="n">uni_df_p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">uni_p_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">1</span><span class="p">:],</span>
+                        <span class="n">index</span><span class="o">=</span><span class="n">uni_p_data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">columns</span><span class="o">=</span><span class="n">uni_p_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">:])</span>
+<span class="c1">#Verify table</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uni_df_p</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>          Public Private            %Private
+Cluster 0     42       5  10.638297872340425
+Cluster 1     83     191    69.7080291970803
+Cluster 2      3     147                98.0
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -14478,10 +14505,12 @@ Ryan Harris</p>
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Cluster 0 - Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
 <span class="n">uni_df1_st</span> <span class="o">=</span> <span class="n">uni_df1_st</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 0 Counts and Percentages&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">uni_df1_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 0 Public vs. Private&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uni_df_p</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1</span><span class="p">,:])</span>
 </pre></div>
 
     </div>
@@ -14498,18 +14527,21 @@ Ryan Harris</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Cluster 0
-    st  ct       pct   pct_ttl  pct_diff
-13  NC   4  8.510638  4.883227  3.627411
-23  TX   4  8.510638  4.246285  4.264354
-18  OH   4  8.510638  5.095541  3.415097
-25  VA   3  6.382979  3.184713  3.198265
-20  PA   3  6.382979  8.917197 -2.534219
-8   MA   3  6.382979  4.670913  1.712066
-10  MI   2  4.255319  2.760085  1.495234
-17  NY   2  4.255319  8.067941 -3.812621
-1   CA   2  4.255319  3.184713  1.070606
-0   AZ   2  4.255319  0.424628  3.830691
+<pre>Cluster 0 Counts and Percentages
+    st  ct       pct  pct_ovrl    pct_diff
+13  NC   4  8.510638  4.883227   74.283071
+23  TX   4  8.510638  4.246285  100.425532
+18  OH   4  8.510638  5.095541   67.021277
+25  VA   3  6.382979  3.184713  100.425532
+20  PA   3  6.382979  8.917197  -28.419453
+8   MA   3  6.382979  4.670913   36.653772
+10  MI   2  4.255319  2.760085   54.173486
+17  NY   2  4.255319  8.067941  -47.256439
+1   CA   2  4.255319  3.184713   33.617021
+0   AZ   2  4.255319  0.424628  902.127660
+Cluster 0 Public vs. Private
+          Public Private            %Private
+Cluster 0     42       5  10.638297872340425
 </pre>
 </div>
 </div>
@@ -14521,7 +14553,8 @@ Ryan Harris</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><i> Some analysis text. </i></p>
+<p><u>Analysis for Cluster 0</u>
+<br><i>Both more rural and more heavily Public. We see a larger percentage of schools in NC, TX, and OH than we see in the normal distribution. In additon, we see a far lower concertration of schools in the "hubs" of PA and NY with -28% and -47% less than the source data.  </i></p>
 
 </div>
 </div>
@@ -14531,10 +14564,12 @@ Ryan Harris</p>
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Cluster 1 - Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
 <span class="n">uni_df2_st</span> <span class="o">=</span> <span class="n">uni_df2_st</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 1 Counts and Percentages&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">uni_df2_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 1 Public vs. Private&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uni_df_p</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,:])</span>
 </pre></div>
 
     </div>
@@ -14551,18 +14586,21 @@ Ryan Harris</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Cluster 1
-    st  ct       pct   pct_ttl  pct_diff
-35  PA  19  6.934307  8.917197 -1.982891
-31  NY  18  6.569343  8.067941 -1.498597
-25  NC  16  5.839416  4.883227  0.956189
-10  IA  16  5.839416  3.821656  2.017760
-40  TX  14  5.109489  4.246285  0.863205
-32  OH  13  4.744526  5.095541 -0.351016
-22  MO  12  4.379562  3.184713  1.194849
-39  TN  11  4.014599  3.184713  0.829885
-29  NJ   9  3.284672  2.760085  0.524587
-42  VA   8  2.919708  3.184713 -0.265005
+<pre>Cluster 1 Counts and Percentages
+    st  ct       pct  pct_ovrl   pct_diff
+35  PA  19  6.934307  8.917197 -22.236705
+31  NY  18  6.569343  8.067941 -18.574721
+25  NC  16  5.839416  4.883227  19.581085
+10  IA  16  5.839416  3.821656  52.798054
+40  TX  14  5.109489  4.246285  20.328467
+32  OH  13  4.744526  5.095541  -6.888686
+22  MO  12  4.379562  3.184713  37.518248
+39  TN  11  4.014599  3.184713  26.058394
+29  NJ   9  3.284672  2.760085  19.006176
+42  VA   8  2.919708  3.184713  -8.321168
+Cluster 1 Public vs. Private
+          Public Private          %Private
+Cluster 1     83     191  69.7080291970803
 </pre>
 </div>
 </div>
@@ -14574,7 +14612,8 @@ Ryan Harris</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><i> Some analysis text. </i></p>
+<p><u>Analysis for Cluster 1</u>
+<br><i>Distribution tends to be locater more Central-East and leans slightly more Private than Public </i></p>
 
 </div>
 </div>
@@ -14584,10 +14623,12 @@ Ryan Harris</p>
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Cluster - 2 Sort by &#39;ct&#39; and Print Top 10 for Analysis</span>
 <span class="n">uni_df3_st</span> <span class="o">=</span> <span class="n">uni_df3_st</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ct&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 2 Counts and Percentages&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">uni_df3_st</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cluster 2 Public vs. Private&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uni_df_p</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,:])</span>
 </pre></div>
 
     </div>
@@ -14604,18 +14645,21 @@ Ryan Harris</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Cluster 3
-    st  ct        pct   pct_ttl  pct_diff
-25  PA  20  13.333333  8.917197  4.416136
-22  NY  18  12.000000  8.067941  3.932059
-12  MA  12   8.000000  4.670913  3.329087
-1   CA  10   6.666667  3.184713  3.481953
-23  OH   7   4.666667  5.095541 -0.428875
-9   IN   7   4.666667  3.184713  1.481953
-3   CT   6   4.000000  2.123142  1.876858
-8   IL   6   4.000000  3.184713  0.815287
-24  OR   4   2.666667  1.061571  1.605096
-16  MN   4   2.666667  2.335456  0.331210
+<pre>Cluster 2 Counts and Percentages
+    st  ct        pct  pct_ovrl    pct_diff
+25  PA  20  13.333333  8.917197   49.523810
+22  NY  18  12.000000  8.067941   48.736842
+12  MA  12   8.000000  4.670913   71.272727
+1   CA  10   6.666667  3.184713  109.333333
+23  OH   7   4.666667  5.095541   -8.416667
+9   IN   7   4.666667  3.184713   46.533333
+3   CT   6   4.000000  2.123142   88.400000
+8   IL   6   4.000000  3.184713   25.600000
+24  OR   4   2.666667  1.061571  151.200000
+16  MN   4   2.666667  2.335456   14.181818
+Cluster 2 Public vs. Private
+          Public Private %Private
+Cluster 2      3     147     98.0
 </pre>
 </div>
 </div>
@@ -14627,7 +14671,8 @@ Ryan Harris</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><i> Some analysis text. </i></p>
+<p><u>Analysis for Cluster 2</u>
+<br><i>A higher concentration in the Northeast, with 1/3rd of schools in PA, NY or MA. This cluster is also very heavily private (147 of 150 schools) </i></p>
 
 </div>
 </div>
